@@ -2,25 +2,42 @@
 	<title>meteor</title>
 </head>
 <body>
-	
-	<a href="/reg" class="btn btn-primary-large">注册</a>
 	{{> nav}}
 	{{> container}}
 	{{> footer}}
-	
 </body>
 
 <template name="nav">
-	<header>我是Header</header>
+	<header>
+		我是Header
+		{{#if currentUser}}
+			<a href="/logout" class="btn btn-primary-large">退出</a>
+		{{else}}
+			<a href="/reg" class="btn btn-primary-large">注册</a>
+			<a href="/login" class="btn btn-primary-large">登陆</a>
+		{{/if}}
+	</header>
 </template>
 <template name="container">
-	{{#if currentUrl.index"}}
+	{{> info}}
+	{{#if currentUrl.index}}
 		{{> index}}
 	{{/if}}
-	{{#if currentUrl."reg"}}
+	{{#if currentUrl.reg}}
 		{{> reg}}
+	{{/if}}
+	{{#if currentUrl.login}}
+		{{> login}}
 	{{/if}}
 </template>
 <template name="footer">
 	<footer>我是Footer</footer>
+</template>
+<template name="info">
+	{{#if info.success}}
+		<div class="alert alert-success">{{info.success}}</div>
+	{{/if}}
+	{{#if info.error}}
+		<div class="alert alert-error">{{info.error}}</div>
+	{{/if}}
 </template>

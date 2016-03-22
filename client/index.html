@@ -1,3 +1,11 @@
 <template name="index">
-	我是Index
+	{{#if currentUser}}
+		<input type="text" id="post" />
+		<button id="submit" class="btn btn-success">发表</button>
+	{{/if}}
+	{{#each posts}}
+		<h2>{{user.username}} 说</h2>
+		<p class="muted">{{time}}</p>
+		<p>{{#markdown}}{{post}}{{/markdown}}</p>
+	{{/each}}
 </template>
