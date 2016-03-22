@@ -1,0 +1,26 @@
+<head>
+	<title>meteor</title>
+</head>
+<body>
+	
+	<a href="/reg" class="btn btn-primary-large">注册</a>
+	{{> nav}}
+	{{> container}}
+	{{> footer}}
+	
+</body>
+
+<template name="nav">
+	<header>我是Header</header>
+</template>
+<template name="container">
+	{{#if currentUrl.index"}}
+		{{> index}}
+	{{/if}}
+	{{#if currentUrl."reg"}}
+		{{> reg}}
+	{{/if}}
+</template>
+<template name="footer">
+	<footer>我是Footer</footer>
+</template>
